@@ -284,7 +284,7 @@ class ThemeBuilder {
                 color: var(--primary-color);
                 font-size: 0.9rem;
               }
-              /* Sidebar & Cart */
+              /* Sidebar &amp; Cart */
               amp-sidebar {
                 width: 320px;
                 padding: 20px;
@@ -443,7 +443,7 @@ class ThemeBuilder {
                   Span(
                     attributes: {
                       'class': 'cart-badge',
-                      '[text]': 'cartState.count',
+                      '&#91;text&#93;': 'cartState.count',
                     },
                     children: [const Text('0')],
                   ),
@@ -548,7 +548,7 @@ class ThemeBuilder {
                                         width: '400',
                                         height: '400',
                                         layout: 'responsive',
-                                        attributes: {'[src]': 'productState.image[0]'},
+                                        attributes: {'&#91;src&#93;': 'productState.image[0]'},
                                       ),
                                     ],
                                   ),
@@ -561,21 +561,21 @@ class ThemeBuilder {
                                 children: [
                                   H1(
                                     attributes: {
-                                      '[text]': 'productState.name',
+                                      '&#91;text&#93;': 'productState.name',
                                     },
                                     children: [const BData(value: 'post.title')],
                                   ),
                                   Div(
                                     attributes: {
                                       'class': 'stock-badge in-stock',
-                                      '[class]': 'productState.hasVariant[0].inStock ? "stock-badge in-stock" : "stock-badge out-stock"',
-                                      '[text]': 'productState.hasVariant[0].inStock ? "In Stock" : "Out of Stock"',
+                                      '&#91;class&#93;': 'productState.hasVariant[0].inStock ? "stock-badge in-stock" : "stock-badge out-stock"',
+                                      '&#91;text&#93;': 'productState.hasVariant[0].inStock ? "In Stock" : "Out of Stock"',
                                     },
                                     children: [const Text('In Stock')],
                                   ),
                                   P(
                                     attributes: {
-                                      '[text]': 'productState.description',
+                                      '&#91;text&#93;': 'productState.description',
                                     },
                                     children: [const BData(value: 'post.body')],
                                   ),
@@ -626,7 +626,7 @@ class ThemeBuilder {
                                           const Text('₹'),
                                           Span(
                                             attributes: {
-                                              '[text]': 'productState.hasVariant[0].price',
+                                              '&#91;text&#93;': 'productState.hasVariant[0].price',
                                             },
                                             children: [const Text('38,851.00')],
                                           ),
@@ -647,7 +647,7 @@ class ThemeBuilder {
                                           Span(
                                             attributes: {
                                               'class': 'qty-val',
-                                              '[text]': 'qty',
+                                              '&#91;text&#93;': 'qty',
                                             },
                                             children: [const Text('1')],
                                           ),
@@ -677,14 +677,14 @@ class ThemeBuilder {
                                               Span(
                                                 attributes: {
                                                   'class': 'addon-name',
-                                                  '[text]': 'productState.addOn[0].itemOffered.name',
+                                                  '&#91;text&#93;': 'productState.addOn[0].itemOffered.name',
                                                 },
                                                 children: [const Text('Premium Gift Wrapping')],
                                               ),
                                               Span(
                                                 attributes: {
                                                   'class': 'addon-price',
-                                                  '[text]': '"₹" + productState.addOn[0].price',
+                                                  '&#91;text&#93;': '"₹" + productState.addOn[0].price',
                                                 },
                                                 children: [const Text('₹499.00')],
                                               ),
@@ -753,7 +753,7 @@ class ThemeBuilder {
           // Render Cart Items dynamically using Mustache Template
           AmpList(
             attributes: {
-              '[src]': 'cartState.items',
+              '&#91;src&#93;': 'cartState.items',
               'layout': 'fixed-height',
               'height': '250',
             },
@@ -788,7 +788,7 @@ class ThemeBuilder {
             children: [
               const Text('Total:'),
               Span(
-                attributes: {'[text]': '"₹" + cartState.subtotal'},
+                attributes: {'&#91;text&#93;': '"₹" + cartState.subtotal'},
                 children: [const Text('₹0.00')],
               ),
             ],
@@ -862,12 +862,12 @@ class ThemeBuilder {
               Div(
                 attributes: {
                   'style': 'margin-top:20px; padding:10px; border-radius:4px;',
-                  '[style]': 'checkoutState.pincodeVerified ? "margin-top:20px; padding:10px; border-radius:4px; background:rgba(46,193,86,0.1); color:var(--success-color);" : "display:none;"',
+                  '&#91;style&#93;': 'checkoutState.pincodeVerified ? "margin-top:20px; padding:10px; border-radius:4px; background:rgba(46,193,86,0.1); color:var(--success-color);" : "display:none;"',
                 },
                 children: [
                   const Text('✓ Delivery is available at: '),
                   Span(
-                    attributes: {'[text]': 'checkoutState.address'},
+                    attributes: {'&#91;text&#93;': 'checkoutState.address'},
                     children: [const Text('')],
                   ),
                 ],
