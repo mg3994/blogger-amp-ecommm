@@ -533,7 +533,7 @@ class ThemeBuilder {
             'script',
             attributes: {'target': 'amp-script', 'type': 'text/plain'},
             children: [
-              const RawText(r'''
+              const RawText(r'''//<![CDATA[
                 (function() {
                   function decodeEntities(text) {
                     if (!text) return "";
@@ -712,7 +712,7 @@ class ThemeBuilder {
 
                   init();
                 })();
-              '''),
+              //]]>'''),
             ],
           ),
         ],
