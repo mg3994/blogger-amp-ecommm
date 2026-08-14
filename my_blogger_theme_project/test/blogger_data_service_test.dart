@@ -169,5 +169,61 @@ void main() {
       // Verified original properties are preserved
       expect(ref['category'], equals('Clothing'));
     });
+
+    test('toGraphDocument merges contexts, strips inner contexts, and merges duplicate nodes by ID', () {
+      final service = BloggerDataService();
+
+      final schema1 = {
+        '@context': 'https://schema.org',
+        '@type': 'Product',
+        '@id': 'prod-1',
+        'name': 'AuraGlow Thermostat',
+        'offers': {
+          '@context': {
+            'co': 'https://custom-ontology.org/'
+          },
+          '@type': 'Offer',
+          'price': '38851.00',
+        }
+      };
+
+      final schema2 = {
+        '@context': 'https://custom-context.org/v1',
+        '@type': 'Product',
+        '@id': 'prod-1', // Duplicate ID to test node merging
+        'category': 'Smart Home',
+        'brand': {
+          '@type': 'Brand',
+          'name': 'Antinna Pro'
+        }
+      };
+
+      final graphDoc = service.toGraphDocument([schema1, schema2]);
+
+      // 1. Verify unified @context is built correctly containing both URLs and map prefixes
+      final context = graphDoc['@context'];
+      expect(context, isA<List>());
+      final listContext = context as List;
+      expect(listContext, contains('https://schema.org'));
+      expect(listContext, contains('https://custom-context.org/v1'));
+
+      final mapContext = listContext.firstWhere((c) => c is Map) as Map;
+      expect(mapContext['co'], equals('https://custom-ontology.org/'));
+
+      // 2. Verify duplicate nodes are merged and deduplicated in the flat @graph list
+      final graph = graphDoc['@graph'] as List;
+      expect(graph.length, equals(1)); // Deduplicated to 1 node
+
+      final entity = graph[0] as Map;
+      expect(entity['@id'], equals('prod-1'));
+      expect(entity['name'], equals('AuraGlow Thermostat')); // Preserved from schema1
+      expect(entity['category'], equals('Smart Home')); // Preserved from schema2
+      expect(entity['brand']['name'], equals('Antinna Pro')); // Preserved from schema2
+      expect(entity['offers']['price'], equals('38851.00')); // Preserved from schema1
+
+      // 3. Verify @context is completely stripped from all nested levels of the nodes inside @graph
+      expect(entity.containsKey('@context'), isFalse);
+      expect(entity['offers'].containsKey('@context'), isFalse);
+    });
   });
 }
