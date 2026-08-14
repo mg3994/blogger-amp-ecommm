@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html b:responsive="true" b:defaultwidgetversion="2" b:layoutsversion="3" b:css="false" xmlns="http://www.w3.org/1999/xhtml" xmlns:b="http://www.google.com/2005/gml/b" xmlns:data="http://www.google.com/2005/gml/data" xmlns:expr="http://www.google.com/2005/gml/expr"><b:attr name="xmlns"/><b:attr name="xmlns:b"/><b:attr name="xmlns:expr"/><b:attr name="xmlns:data"/><b:attr name="amp" value="amp" cond="data:blog.isMobileRequest"/><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1"/><link rel="canonical" expr:href="data:blog.canonicalUrl"/><title><data:blog.pageTitle/></title><script async="async" src="https://cdn.ampproject.org/v0.js"/><script async="async" custom-element="amp-bind" src="https://cdn.ampproject.org/v0/amp-bind-0.1.js"/><script async="async" custom-element="amp-list" src="https://cdn.ampproject.org/v0/amp-list-0.1.js"/><script async="async" custom-element="amp-form" src="https://cdn.ampproject.org/v0/amp-form-0.1.js"/><script async="async" custom-template="amp-mustache" src="https://cdn.ampproject.org/v0/amp-mustache-0.2.js"/><script async="async" custom-element="amp-carousel" src="https://cdn.ampproject.org/v0/amp-carousel-0.1.js"/><script async="async" custom-element="amp-lightbox" src="https://cdn.ampproject.org/v0/amp-lightbox-0.1.js"/><script async="async" custom-element="amp-sidebar" src="https://cdn.ampproject.org/v0/amp-sidebar-0.1.js"/><script async="async" custom-element="amp-selector" src="https://cdn.ampproject.org/v0/amp-selector-0.1.js"/><script async="async" custom-element="amp-autocomplete" src="https://cdn.ampproject.org/v0/amp-autocomplete-0.1.js"/><style amp-boilerplate="amp-boilerplate">body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate="amp-boilerplate">body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript><style amp-custom="amp-custom" id="theme-skin" type="text/css">              :root {
+                --primary-color: #ff9900;
+                --secondary-color: #333333;
+                --background-light: #f4f4f4;
+                --text-dark: #222222;
+                --border-color: #dddddd;
+                --success-color: #2ec156;
+              }
+              body {
+                font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+                color: var(--text-dark);
+                background-color: #ffffff;
+                margin: 0;
+                padding: 0;
+              }
+              header {
+                background-color: var(--secondary-color);
+                color: #ffffff;
+                padding: 10px 20px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                position: sticky;
+                top: 0;
+                z-index: 100;
+              }
+              .logo {
+                font-size: 1.5rem;
+                font-weight: bold;
+                color: var(--primary-color);
+                text-decoration: none;
+              }
+              .nav-actions {
+                display: flex;
+                gap: 15px;
+                align-items: center;
+              }
+              .cart-btn {
+                background: none;
+                border: none;
+                color: #ffffff;
+                cursor: pointer;
+                position: relative;
+                font-size: 1.2rem;
+              }
+              .cart-badge {
+                position: absolute;
+                top: -8px;
+                right: -8px;
+                background-color: var(--primary-color);
+                color: var(--secondary-color);
+                font-size: 0.75rem;
+                font-weight: bold;
+                padding: 2px 6px;
+                border-radius: 50%;
+              }
+              .main-container {
+                max-width: 1200px;
+                margin: 0 auto;
+                padding: 20px;
+              }
+              .product-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+                gap: 20px;
+              }
+              .product-card {
+                border: 1px solid var(--border-color);
+                border-radius: 8px;
+                overflow: hidden;
+                box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+                text-decoration: none;
+                color: inherit;
+                display: flex;
+                flex-direction: column;
+                background: #fff;
+              }
+              .product-img {
+                width: 100%;
+                height: 250px;
+                object-fit: cover;
+              }
+              .product-info {
+                padding: 15px;
+                display: flex;
+                flex-direction: column;
+                flex-grow: 1;
+              }
+              .product-title {
+                font-size: 1.1rem;
+                font-weight: bold;
+                margin: 0 0 10px 0;
+              }
+              .product-price {
+                font-size: 1.2rem;
+                color: var(--primary-color);
+                font-weight: bold;
+                margin-top: auto;
+              }
+              .p-badge {
+                align-self: flex-start;
+                background: rgba(0,0,0,0.05);
+                font-size: 0.75rem;
+                padding: 2px 8px;
+                border-radius: 4px;
+                margin-bottom: 8px;
+              }
+              /* Product Detail styles */
+              .detail-container {
+                display: grid;
+                grid-template-columns: 1fr;
+                gap: 30px;
+              }
+              @media (min-width: 768px) {
+                .detail-container {
+                  grid-template-columns: 1.2fr 1fr;
+                }
+              }
+              .detail-img-area {
+                background: #fdfdfd;
+              }
+              .detail-info-area {
+                display: flex;
+                flex-direction: column;
+                gap: 15px;
+              }
+              .stock-badge {
+                font-weight: bold;
+                padding: 4px 10px;
+                border-radius: 4px;
+                align-self: flex-start;
+                font-size: 0.85rem;
+              }
+              .in-stock {
+                background-color: rgba(46, 193, 86, 0.1);
+                color: var(--success-color);
+              }
+              .out-stock {
+                background-color: rgba(234, 67, 53, 0.1);
+                color: #ea4335;
+              }
+              .variant-selector {
+                margin: 15px 0;
+              }
+              .selector-title {
+                font-weight: bold;
+                margin-bottom: 8px;
+                font-size: 0.9rem;
+              }
+              .option-btn {
+                background-color: #fff;
+                border: 1px solid var(--border-color);
+                padding: 8px 16px;
+                margin-right: 8px;
+                border-radius: 4px;
+                cursor: pointer;
+              }
+              .option-btn[selected] {
+                border-color: var(--primary-color);
+                background-color: rgba(255, 153, 0, 0.05);
+                font-weight: bold;
+              }
+              .action-bar {
+                display: flex;
+                gap: 15px;
+                margin-top: 20px;
+              }
+              .btn-primary {
+                background-color: var(--primary-color);
+                color: var(--secondary-color);
+                border: none;
+                padding: 12px 24px;
+                font-size: 1rem;
+                font-weight: bold;
+                border-radius: 6px;
+                cursor: pointer;
+                flex-grow: 1;
+                text-align: center;
+              }
+              .btn-primary[disabled] {
+                background-color: var(--border-color);
+                cursor: not-allowed;
+              }
+              .qty-btn {
+                background-color: var(--background-light);
+                border: 1px solid var(--border-color);
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                font-size: 1.2rem;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                cursor: pointer;
+              }
+              .qty-val {
+                font-size: 1.2rem;
+                font-weight: bold;
+                width: 30px;
+                text-align: center;
+              }
+              /* Addons list styles */
+              .addons-section {
+                border-top: 1px solid var(--border-color);
+                padding-top: 20px;
+                margin-top: 25px;
+              }
+              .addon-card {
+                border: 1px solid var(--border-color);
+                padding: 12px;
+                border-radius: 6px;
+                margin-bottom: 10px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+              }
+              .addon-info {
+                display: flex;
+                flex-direction: column;
+              }
+              .addon-name {
+                font-weight: bold;
+              }
+              .addon-price {
+                color: var(--primary-color);
+                font-size: 0.9rem;
+              }
+              /* Sidebar & Cart */
+              amp-sidebar {
+                width: 320px;
+                padding: 20px;
+                background: #fff;
+                box-shadow: -2px 0 10px rgba(0,0,0,0.1);
+              }
+              .cart-header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                border-bottom: 1px solid var(--border-color);
+                padding-bottom: 15px;
+                margin-bottom: 20px;
+              }
+              .close-sidebar-btn {
+                background: none;
+                border: none;
+                font-size: 1.5rem;
+                cursor: pointer;
+              }
+              .cart-item {
+                display: flex;
+                gap: 10px;
+                padding: 10px 0;
+                border-bottom: 1px dashed var(--border-color);
+              }
+              .cart-item-details {
+                flex-grow: 1;
+              }
+              .cart-total {
+                font-size: 1.3rem;
+                font-weight: bold;
+                display: flex;
+                justify-content: space-between;
+                margin: 20px 0;
+              }
+              /* Modals and Lightboxes */
+              .lightbox-content {
+                background: white;
+                max-width: 500px;
+                margin: 100px auto;
+                padding: 25px;
+                border-radius: 8px;
+                position: relative;
+              }
+              .close-lightbox {
+                position: absolute;
+                top: 15px;
+                right: 15px;
+                background: none;
+                border: none;
+                font-size: 1.5rem;
+                cursor: pointer;
+              }
+              .form-group {
+                margin-bottom: 15px;
+              }
+              .form-group label {
+                display: block;
+                font-weight: bold;
+                margin-bottom: 5px;
+              }
+              .form-control {
+                width: 100%;
+                padding: 10px;
+                border: 1px solid var(--border-color);
+                border-radius: 4px;
+                box-sizing: border-box;
+              }
+            </style></head><body><amp-state id="cartState"><script type="application/json">{"items": [], "subtotal": 0, "count": 0}</script></amp-state><amp-state id="checkoutState"><script type="application/json">{"pincode": "", "pincodeVerified": false, "address": ""}</script></amp-state><amp-state id="productState"><script type="application/json">{"@context": "https://schema.org","@base": "118774185466060931/159915394249811386","@type": "ProductGroup","name": "Premium Organic Cotton Crewneck Collection","description": "Premium 100% organic cotton crewneck collection featuring various colors and optional personalization services.","brand": {"@type": "Brand", "name": "Antinna Pro Max"},"image": ["https://picsum.dev/800/600?blur=5", "https://picsum.dev/200/200?static"],"hasVariant": [{"@id": "variant-midnight-blue","@type": "Product","name": "Elite Crewneck - Midnight Blue (Large)","sku": "EC-MB-L-001","color": "Midnight Blue","size": "Large","price": "38851.00","priceCurrency": "INR","inStock": true}],"addOn": [{"@type": "Offer","price": "499.00","priceCurrency": "INR","itemOffered": {"@id": "addon-wrapping","@type": "Service","name": "Premium Gift Wrapping"}}]}</script></amp-state><header><a href="/" class="logo">Antinna E-Comm</a><div class="nav-actions"><button class="cart-btn" on="tap:cartDrawer.toggle">&#x1F6D2; Bag<span class="cart-badge" [text]="cartState.count">0</span></button></div></header><div class="main-container"><b:section id="main-content-section" class="main-content" maxwidgets="1" showaddelement="yes"><b:widget id="Blog1" type="Blog" version="2"><b:includable id="main"><b:if cond="data:view.isMultipleItems"><h1>Our Collections</h1><div class="product-grid"><b:loop values="data:posts" var="post"><a class="product-card" expr:href="data:post.url"><img class="product-img" expr:src="data:post.firstImageUrl" alt="Product Image" loading="lazy"/><div class="product-info"><div class="p-badge">Product</div><h3 class="product-title"><data:post.title/></h3><div class="product-price">&#x20B9;<data:post.id/></div></div></a></b:loop></div><b:else/><div class="detail-container"><div class="detail-img-area"><amp-carousel type="slides" width="400" height="400" layout="responsive" loop="loop"><amp-img src="https://picsum.dev/800/600?blur=5" width="400" height="400" layout="responsive" [src]="productState.image[0]"/></amp-carousel></div><div class="detail-info-area"><h1 [text]="productState.name"><data:post.title/></h1><div class="stock-badge in-stock" [class]="productState.hasVariant[0].inStock ? &quot;stock-badge in-stock&quot; : &quot;stock-badge out-stock&quot;" [text]="productState.hasVariant[0].inStock ? &quot;In Stock&quot; : &quot;Out of Stock&quot;">In Stock</div><p [text]="productState.description"><data:post.body/></p><div class="variant-selector"><div class="selector-title">Select Size</div><amp-selector id="sizeSelector" name="size"><button class="option-btn" option="Large" selected="selected">Large</button><button class="option-btn" option="Medium">Medium</button></amp-selector></div><div style="display:flex; justify-content:space-between; align-items:center; margin: 20px 0;"><div style="color:var(--primary-color); font-size:1.8rem; font-weight:bold;">&#x20B9;<span [text]="productState.hasVariant[0].price">38,851.00</span></div><div style="display:flex; align-items:center; gap:10px;"><button class="qty-btn" on="tap:AMP.setState({ qty: (qty &gt; 1 ? qty - 1 : 1) })">-</button><span class="qty-val" [text]="qty">1</span><button class="qty-btn" on="tap:AMP.setState({ qty: (qty || 1) + 1 })">+</button></div></div><div class="addons-section"><h3>Optional Add-ons</h3><div class="addon-card"><div class="addon-info"><span class="addon-name" [text]="productState.addOn[0].itemOffered.name">Premium Gift Wrapping</span><span class="addon-price" [text]="&quot;&#x20B9;&quot; + productState.addOn[0].price">&#x20B9;499.00</span></div><button class="option-btn" on="tap:AMP.setState({ cartState: { items: cartState.items.concat([{&quot;name&quot;: productState.addOn[0].itemOffered.name, &quot;price&quot;: productState.addOn[0].price, &quot;qty&quot;: 1}]), subtotal: cartState.subtotal + 499, count: cartState.count + 1 } })">Add Addon</button></div></div><div class="action-bar"><button class="btn-primary" on="tap:AMP.setState({ cartState: { items: cartState.items.concat([{&quot;name&quot;: productState.name, &quot;price&quot;: productState.hasVariant[0].price, &quot;qty&quot;: qty || 1}]), subtotal: cartState.subtotal + (productState.hasVariant[0].price * (qty || 1)), count: cartState.count + (qty || 1) } }), cartDrawer.open">ADD TO BAG</button></div></div></div></b:if></b:includable></b:widget></b:section></div><amp-sidebar id="cartDrawer" layout="nodisplay" side="right"><div class="cart-header"><h2>Your Bag</h2><button class="close-sidebar-btn" on="tap:cartDrawer.close">&#xD7;</button></div><amp-list [src]="cartState.items" layout="fixed-height" height="250"><template type="amp-mustache"><div class="cart-item"><div class="cart-item-details"><div style="font-weight:bold;">{{name}}</div><div style="color:var(--primary-color);">&#x20B9;{{price}} x {{qty}}</div></div></div></template></amp-list><div class="cart-total">Total:<span [text]="&quot;&#x20B9;&quot; + cartState.subtotal">&#x20B9;0.00</span></div><button class="btn-primary" style="width:100%; text-align:center;" on="tap:locationModal.open, cartDrawer.close">Checkout Order</button></amp-sidebar><amp-lightbox id="locationModal" layout="nodisplay"><div class="lightbox-content"><button class="close-lightbox" on="tap:locationModal.close">&#xD7;</button><h3>Verify Delivery Area</h3><form method="GET" action-xhr="https://script.google.com/macros/s/AKfycbyca4Xz_AE6Om1okIMf0TQ9EE9uIifQcVZhsDwnZK0K4weG7VD0w3jEzM0aCcuBeoWIIA/exec" target="_top" on="submit-success:AMP.setState({ checkoutState: { pincodeVerified: event.response.success, address: event.response.address } })"><div class="form-group"><label for="pincodeInput">Enter Delivery Pincode</label><input type="text" id="pincodeInput" name="pincode" class="form-control" placeholder="e.g., 110001" required="required"/></div><button type="submit" class="btn-primary" style="width:100%; margin-top:10px;">Verify Pincode</button></form><div style="margin-top:20px; padding:10px; border-radius:4px;" [style]="checkoutState.pincodeVerified ? &quot;margin-top:20px; padding:10px; border-radius:4px; background:rgba(46,193,86,0.1); color:var(--success-color);&quot; : &quot;display:none;&quot;">&#x2713; Delivery is available at: <span [text]="checkoutState.address"></span></div></div></amp-lightbox>&lt;textarea id=&#39;template_widgets_js&#39; disabled=&#39;disabled&#39;
+ readonly=&#39;readonly&#39; hidden=&#39;hidden&#39; aria-hidden=&#39;true&#39;
+class=&#39;notranslate&#39;&gt;
+  </body>
+  &lt;/textarea&gt;
+  &lt;/body&gt;</html>
