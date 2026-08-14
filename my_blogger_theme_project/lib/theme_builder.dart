@@ -509,274 +509,253 @@ class ThemeBuilder {
         ],
       ),
 
-      // Main Container
+      // Main Container - Pure HTML/AMP (No Section or Widget tags)
       Div(
         attributes: {'class': 'main-container'},
         children: [
-          // Blogger Main Section
-          BSection(
-            id: 'main-content-section',
-            className: 'main-content',
-            maxwidgets: 1,
-            showaddelement: true,
+          // Distinguish between Home / Index list page and Individual Item post page using Blogger conditions
+          BIf(
+            cond: 'data:view.isMultipleItems',
             children: [
-              BWidget(
-                id: 'Blog1',
-                type: 'Blog',
-                version: 2,
+              H1(children: [const Text('Our Collections')]),
+              Div(
+                attributes: {'class': 'product-grid'},
                 children: [
-                  BIncludable(
-                    id: 'main',
+                  BLoop(
+                    values: 'data:posts',
+                    varName: 'post',
                     children: [
-                      // Distinguish between Home / Index list page and Individual Item post page
-                      BIf(
-                        cond: 'data:view.isMultipleItems',
+                      A(
+                        attributes: {
+                          'class': 'product-card',
+                          'expr:href': 'data:post.url',
+                        },
                         children: [
-                          H1(children: [const Text('Our Collections')]),
+                          AmpImg(
+                            src: 'https://picsum.dev/400/300?text=Product',
+                            width: '400',
+                            height: '300',
+                            layout: 'responsive',
+                            attributes: {
+                              'class': 'product-img',
+                              'expr:src': 'data:post.firstImageUrl',
+                              'alt': 'Product Image',
+                              'loading': 'lazy',
+                            },
+                          ),
                           Div(
-                            attributes: {'class': 'product-grid'},
+                            attributes: {'class': 'product-info'},
                             children: [
-                              BLoop(
-                                values: 'data:posts',
-                                varName: 'post',
+                              const Div(
+                                attributes: {'class': 'p-badge'},
+                                children: [Text('Product')],
+                              ),
+                              H3(
+                                attributes: {'class': 'product-title'},
                                 children: [
-                                  A(
-                                    attributes: {
-                                      'class': 'product-card',
-                                      'expr:href': 'data:post.url',
-                                    },
-                                    children: [
-                                      AmpImg(
-                                        src: 'https://picsum.dev/400/300?text=Product',
-                                        width: '400',
-                                        height: '300',
-                                        layout: 'responsive',
-                                        attributes: {
-                                          'class': 'product-img',
-                                          'expr:src': 'data:post.firstImageUrl',
-                                          'alt': 'Product Image',
-                                          'loading': 'lazy',
-                                        },
-                                      ),
-                                      Div(
-                                        attributes: {'class': 'product-info'},
-                                        children: [
-                                          const Div(
-                                            attributes: {'class': 'p-badge'},
-                                            children: [Text('Product')],
-                                          ),
-                                          H3(
-                                            attributes: {'class': 'product-title'},
-                                            children: [
-                                              const BData(value: 'post.title'),
-                                            ],
-                                          ),
-                                          Div(
-                                            attributes: {'class': 'product-price'},
-                                            children: [
-                                              const Text('₹'),
-                                              const BData(value: 'post.id'), // Mock Price
-                                            ],
-                                          ),
-                                        ],
-                                      ),
-                                    ],
-                                  ),
+                                  const BData(value: 'post.title'),
+                                ],
+                              ),
+                              Div(
+                                attributes: {'class': 'product-price'},
+                                children: [
+                                  const Text('₹'),
+                                  const BData(value: 'post.id'), // Dynamic post identifier
                                 ],
                               ),
                             ],
                           ),
-                          const BElse(),
-                          // Item / Post Detail page
-                          Div(
-                            attributes: {'class': 'detail-container'},
+                        ],
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+              const BElse(),
+              // Item / Post Detail page (Pure HTML & AMP, widget-free)
+              Div(
+                attributes: {'class': 'detail-container'},
+                children: [
+                  // Left Image Area
+                  Div(
+                    attributes: {'class': 'detail-img-area'},
+                    children: [
+                      AmpCarousel(
+                        type: 'slides',
+                        width: '400',
+                        height: '400',
+                        layout: 'responsive',
+                        loop: true,
+                        children: [
+                          AmpImg(
+                            src: 'https://picsum.dev/800/600?blur=5',
+                            width: '400',
+                            height: '400',
+                            layout: 'responsive',
+                            attributes: {'data-amp-bind-src': 'productState.image[0]'},
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+
+                  // Right Details Area
+                  Div(
+                    attributes: {'class': 'detail-info-area'},
+                    children: [
+                      H1(
+                        attributes: {
+                          'data-amp-bind-text': 'productState.name',
+                        },
+                        children: [const BData(value: 'post.title')],
+                      ),
+                      Div(
+                        attributes: {
+                          'class': 'stock-badge in-stock',
+                          'data-amp-bind-class': 'productState.hasVariant[0].inStock ? "stock-badge in-stock" : "stock-badge out-stock"',
+                          'data-amp-bind-text': 'productState.hasVariant[0].inStock ? "In Stock" : "Out of Stock"',
+                        },
+                        children: [const Text('In Stock')],
+                      ),
+                      P(
+                        attributes: {
+                          'data-amp-bind-text': 'productState.description',
+                        },
+                        children: [const BData(value: 'post.body')],
+                      ),
+
+                      // Variant Selector (Size)
+                      Div(
+                        attributes: {'class': 'variant-selector'},
+                        children: [
+                          const Div(
+                            attributes: {'class': 'selector-title'},
+                            children: [Text('Select Size')],
+                          ),
+                          AmpSelector(
+                            id: 'sizeSelector',
+                            name: 'size',
                             children: [
-                              // Left Image Area
-                              Div(
-                                attributes: {'class': 'detail-img-area'},
-                                children: [
-                                  AmpCarousel(
-                                    type: 'slides',
-                                    width: '400',
-                                    height: '400',
-                                    layout: 'responsive',
-                                    loop: true,
-                                    children: [
-                                      AmpImg(
-                                        src: 'https://picsum.dev/800/600?blur=5',
-                                        width: '400',
-                                        height: '400',
-                                        layout: 'responsive',
-                                        attributes: {'data-amp-bind-src': 'productState.image[0]'},
-                                      ),
-                                    ],
-                                  ),
-                                ],
+                              Button(
+                                attributes: {
+                                  'class': 'option-btn',
+                                  'option': 'Large',
+                                  'selected': 'selected',
+                                },
+                                children: [const Text('Large')],
                               ),
-
-                              // Right Details Area
-                              Div(
-                                attributes: {'class': 'detail-info-area'},
-                                children: [
-                                  H1(
-                                    attributes: {
-                                      'data-amp-bind-text': 'productState.name',
-                                    },
-                                    children: [const BData(value: 'post.title')],
-                                  ),
-                                  Div(
-                                    attributes: {
-                                      'class': 'stock-badge in-stock',
-                                      'data-amp-bind-class': 'productState.hasVariant[0].inStock ? "stock-badge in-stock" : "stock-badge out-stock"',
-                                      'data-amp-bind-text': 'productState.hasVariant[0].inStock ? "In Stock" : "Out of Stock"',
-                                    },
-                                    children: [const Text('In Stock')],
-                                  ),
-                                  P(
-                                    attributes: {
-                                      'data-amp-bind-text': 'productState.description',
-                                    },
-                                    children: [const BData(value: 'post.body')],
-                                  ),
-
-                                  // Variant Selector (Size)
-                                  Div(
-                                    attributes: {'class': 'variant-selector'},
-                                    children: [
-                                      const Div(
-                                        attributes: {'class': 'selector-title'},
-                                        children: [Text('Select Size')],
-                                      ),
-                                      AmpSelector(
-                                        id: 'sizeSelector',
-                                        name: 'size',
-                                        children: [
-                                          Button(
-                                            attributes: {
-                                              'class': 'option-btn',
-                                              'option': 'Large',
-                                              'selected': 'selected',
-                                            },
-                                            children: [const Text('Large')],
-                                          ),
-                                          Button(
-                                            attributes: {
-                                              'class': 'option-btn',
-                                              'option': 'Medium',
-                                            },
-                                            children: [const Text('Medium')],
-                                          ),
-                                        ],
-                                      ),
-                                    ],
-                                  ),
-
-                                  // Quantity & Price Row
-                                  Div(
-                                    attributes: {
-                                      'style': 'display:flex; justify-content:space-between; align-items:center; margin: 20px 0;'
-                                    },
-                                    children: [
-                                      Div(
-                                        attributes: {
-                                          'style': 'color:var(--primary-color); font-size:1.8rem; font-weight:bold;'
-                                        },
-                                        children: [
-                                          const Text('₹'),
-                                          Span(
-                                            attributes: {
-                                              'data-amp-bind-text': 'productState.hasVariant[0].price',
-                                            },
-                                            children: [const Text('38,851.00')],
-                                          ),
-                                        ],
-                                      ),
-                                      Div(
-                                        attributes: {
-                                          'style': 'display:flex; align-items:center; gap:10px;'
-                                        },
-                                        children: [
-                                          Button(
-                                            attributes: {
-                                              'class': 'qty-btn',
-                                              'on': 'tap:AMP.setState({ qty: (qty > 1 ? qty - 1 : 1) })',
-                                            },
-                                            children: [const Text('-')],
-                                          ),
-                                          Span(
-                                            attributes: {
-                                              'class': 'qty-val',
-                                              'data-amp-bind-text': 'qty',
-                                            },
-                                            children: [const Text('1')],
-                                          ),
-                                          Button(
-                                            attributes: {
-                                              'class': 'qty-btn',
-                                              'on': 'tap:AMP.setState({ qty: (qty || 1) + 1 })',
-                                            },
-                                            children: [const Text('+')],
-                                          ),
-                                        ],
-                                      ),
-                                    ],
-                                  ),
-
-                                  // Add-ons Section
-                                  Div(
-                                    attributes: {'class': 'addons-section'},
-                                    children: [
-                                      H3(children: [const Text('Optional Add-ons')]),
-                                      Div(
-                                        attributes: {'class': 'addon-card'},
-                                        children: [
-                                          Div(
-                                            attributes: {'class': 'addon-info'},
-                                            children: [
-                                              Span(
-                                                attributes: {
-                                                  'class': 'addon-name',
-                                                  'data-amp-bind-text': 'productState.addOn[0].itemOffered.name',
-                                                },
-                                                children: [const Text('Premium Gift Wrapping')],
-                                              ),
-                                              Span(
-                                                attributes: {
-                                                  'class': 'addon-price',
-                                                  'data-amp-bind-text': '"₹" + productState.addOn[0].price',
-                                                },
-                                                children: [const Text('₹499.00')],
-                                              ),
-                                            ],
-                                          ),
-                                          Button(
-                                            attributes: {
-                                              'class': 'option-btn',
-                                              'on': 'tap:AMP.setState({ cartState: { items: cartState.items.concat([{"name": productState.addOn[0].itemOffered.name, "price": productState.addOn[0].price, "qty": 1}]), subtotal: cartState.subtotal + 499, count: cartState.count + 1 } })',
-                                            },
-                                            children: [const Text('Add Addon')],
-                                          ),
-                                        ],
-                                      ),
-                                    ],
-                                  ),
-
-                                  // Main Actions
-                                  Div(
-                                    attributes: {'class': 'action-bar'},
-                                    children: [
-                                      Button(
-                                        attributes: {
-                                          'class': 'btn-primary',
-                                          'on': 'tap:AMP.setState({ cartState: { items: cartState.items.concat([{"name": productState.name, "price": productState.hasVariant[0].price, "qty": qty || 1}]), subtotal: cartState.subtotal + (productState.hasVariant[0].price * (qty || 1)), count: cartState.count + (qty || 1) } }), cartDrawer.open',
-                                        },
-                                        children: [const Text('ADD TO BAG')],
-                                      ),
-                                    ],
-                                  ),
-                                ],
+                              Button(
+                                attributes: {
+                                  'class': 'option-btn',
+                                  'option': 'Medium',
+                                },
+                                children: [const Text('Medium')],
                               ),
                             ],
+                          ),
+                        ],
+                      ),
+
+                      // Quantity & Price Row
+                      Div(
+                        attributes: {
+                          'style': 'display:flex; justify-content:space-between; align-items:center; margin: 20px 0;'
+                        },
+                        children: [
+                          Div(
+                            attributes: {
+                              'style': 'color:var(--primary-color); font-size:1.8rem; font-weight:bold;'
+                            },
+                            children: [
+                              const Text('₹'),
+                              Span(
+                                attributes: {
+                                  'data-amp-bind-text': 'productState.hasVariant[0].price',
+                                },
+                                children: [const Text('38,851.00')],
+                              ),
+                            ],
+                          ),
+                          Div(
+                            attributes: {
+                              'style': 'display:flex; align-items:center; gap:10px;'
+                            },
+                            children: [
+                              Button(
+                                attributes: {
+                                  'class': 'qty-btn',
+                                  'on': 'tap:AMP.setState({ qty: (qty > 1 ? qty - 1 : 1) })',
+                                },
+                                children: [const Text('-')],
+                              ),
+                              Span(
+                                attributes: {
+                                  'class': 'qty-val',
+                                  'data-amp-bind-text': 'qty',
+                                },
+                                children: [const Text('1')],
+                              ),
+                              Button(
+                                attributes: {
+                                  'class': 'qty-btn',
+                                  'on': 'tap:AMP.setState({ qty: (qty || 1) + 1 })',
+                                },
+                                children: [const Text('+')],
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+
+                      // Add-ons Section
+                      Div(
+                        attributes: {'class': 'addons-section'},
+                        children: [
+                          H3(children: [const Text('Optional Add-ons')]),
+                          Div(
+                            attributes: {'class': 'addon-card'},
+                            children: [
+                              Div(
+                                attributes: {'class': 'addon-info'},
+                                children: [
+                                  Span(
+                                    attributes: {
+                                      'class': 'addon-name',
+                                      'data-amp-bind-text': 'productState.addOn[0].itemOffered.name',
+                                    },
+                                    children: [const Text('Premium Gift Wrapping')],
+                                  ),
+                                  Span(
+                                    attributes: {
+                                      'class': 'addon-price',
+                                      'data-amp-bind-text': '"₹" + productState.addOn[0].price',
+                                    },
+                                    children: [const Text('₹499.00')],
+                                  ),
+                                ],
+                              ),
+                              Button(
+                                attributes: {
+                                  'class': 'option-btn',
+                                  'on': 'tap:AMP.setState({ cartState: { items: cartState.items.concat([{"name": productState.addOn[0].itemOffered.name, "price": productState.addOn[0].price, "qty": 1}]), subtotal: cartState.subtotal + 499, count: cartState.count + 1 } })',
+                                },
+                                children: [const Text('Add Addon')],
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+
+                      // Main Actions
+                      Div(
+                        attributes: {'class': 'action-bar'},
+                        children: [
+                          Button(
+                            attributes: {
+                              'class': 'btn-primary',
+                              'on': 'tap:AMP.setState({ cartState: { items: cartState.items.concat([{"name": productState.name, "price": productState.hasVariant[0].price, "qty": qty || 1}]), subtotal: cartState.subtotal + (productState.hasVariant[0].price * (qty || 1)), count: cartState.count + (qty || 1) } }), cartDrawer.open',
+                            },
+                            children: [const Text('ADD TO BAG')],
                           ),
                         ],
                       ),
