@@ -170,7 +170,35 @@ void main() {
       expect(ref['category'], equals('Clothing'));
     });
 
-    test('toGraphDocument merges contexts, strips inner contexts, and merges duplicate nodes by ID', () {
+    test('toGraphDocument pure schema.org context merging', () {
+      final service = BloggerDataService();
+
+      final schema1 = {
+        '@context': 'https://schema.org/',
+        '@type': 'Product',
+        '@id': 'prod-1',
+        'name': 'AuraGlow Thermostat'
+      };
+
+      final schema2 = {
+        '@context': {
+          '@vocab': 'https://schema.org/'
+        },
+        '@type': 'Product',
+        '@id': 'prod-2',
+        'name': 'Smart Sensor'
+      };
+
+      final graphDoc = service.toGraphDocument([schema1, schema2]);
+
+      // When only schema.org is present anywhere, output clean URL string
+      expect(graphDoc['@context'], equals('https://schema.org'));
+
+      final graph = graphDoc['@graph'] as List;
+      expect(graph.length, equals(2));
+    });
+
+    test('toGraphDocument mixed contexts with schema.org and custom prefixes', () {
       final service = BloggerDataService();
 
       final schema1 = {
@@ -188,7 +216,7 @@ void main() {
       };
 
       final schema2 = {
-        '@context': 'https://custom-context.org/v1',
+        '@context': 'https://schema.org',
         '@type': 'Product',
         '@id': 'prod-1', // Duplicate ID to test node merging
         'category': 'Smart Home',
@@ -200,14 +228,12 @@ void main() {
 
       final graphDoc = service.toGraphDocument([schema1, schema2]);
 
-      // 1. Verify unified @context is built correctly containing both URLs and map prefixes
+      // 1. Verify unified @context is built correctly containing both @vocab and schema pointing to schema.org/
       final context = graphDoc['@context'];
-      expect(context, isA<List>());
-      final listContext = context as List;
-      expect(listContext, contains('https://schema.org'));
-      expect(listContext, contains('https://custom-context.org/v1'));
-
-      final mapContext = listContext.firstWhere((c) => c is Map) as Map;
+      expect(context, isA<Map>());
+      final mapContext = context as Map;
+      expect(mapContext['@vocab'], equals('https://schema.org/'));
+      expect(mapContext['schema'], equals('https://schema.org/'));
       expect(mapContext['co'], equals('https://custom-ontology.org/'));
 
       // 2. Verify duplicate nodes are merged and deduplicated in the flat @graph list

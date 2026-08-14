@@ -261,31 +261,56 @@ class BloggerDataService {
     Set<String> contextUrls,
     Map<String, dynamic> combinedMap,
   ) {
-    final hasMap = combinedMap.isNotEmpty;
-    final urls = contextUrls.toList();
+    // 1. Identify schema.org contexts
+    final isSchemaOrgUrl = (String u) => u.startsWith('https://schema.org') || u.startsWith('http://schema.org');
 
-    // Default fallback if no context was found
-    if (urls.isEmpty && !hasMap) {
+    final hasSchemaOrgUrl = contextUrls.any(isSchemaOrgUrl);
+    final hasSchemaOrgVocab = combinedMap['@vocab'] != null && (combinedMap['@vocab'] as String).startsWith('http');
+    final hasSchemaOrgPrefix = combinedMap['schema'] != null && (combinedMap['schema'] as String).startsWith('http');
+
+    final isPureSchemaOrg = hasSchemaOrgUrl || hasSchemaOrgVocab || hasSchemaOrgPrefix;
+
+    // Filter out standard schema.org URLs from the custom lists
+    final customUrls = contextUrls.where((u) => !isSchemaOrgUrl(u)).toList();
+
+    final Map<String, dynamic> customMap = {};
+    combinedMap.forEach((k, v) {
+      if (k == '@vocab' && (v as String).contains('schema.org')) return;
+      if (k == 'schema' && (v as String).contains('schema.org')) return;
+      customMap[k] = v;
+    });
+
+    final hasCustomContext = customUrls.isNotEmpty || customMap.isNotEmpty;
+
+    if (!hasCustomContext) {
+      // If we just have schema.org in any of our contexts, just keep it as a clean simple URL string
       return 'https://schema.org';
     }
 
-    // Case 1: Only a mapping object exists (e.g. huge prefix map, @vocab)
-    if (urls.isEmpty && hasMap) {
-      return combinedMap;
+    // Otherwise compile a unified context object map
+    final Map<String, dynamic> unifiedContext = {};
+
+    // Standardize and prefer @vocab and schema: prefixes pointing to https://schema.org/
+    if (isPureSchemaOrg) {
+      unifiedContext['@vocab'] = 'https://schema.org/';
+      unifiedContext['schema'] = 'https://schema.org/';
     }
 
-    // Case 2: Only 1 string URL exists and no object mappings
-    if (urls.length == 1 && !hasMap) {
-      return urls[0];
+    // Merge any other custom elements/prefixes
+    customMap.forEach((k, v) {
+      unifiedContext[k] = v;
+    });
+
+    // Handle any custom external URLs (e.g., return list context if there are custom URLs)
+    if (customUrls.isNotEmpty) {
+      final resultList = <dynamic>[...customUrls];
+      if (unifiedContext.isNotEmpty) {
+        resultList.add(unifiedContext);
+      }
+      return resultList;
     }
 
-    // Case 3: Mixed (URLs + prefix mapping object)
-    final result = <dynamic>[...urls];
-    if (hasMap) {
-      result.add(combinedMap);
-    }
-
-    return result;
+    return unifiedContext;
   }
 
   /// Deduplicates entities by @id. Merges duplicate nodes with the same ID.
