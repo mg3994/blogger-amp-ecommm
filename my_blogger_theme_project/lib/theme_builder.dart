@@ -1123,6 +1123,13 @@ class ThemeBuilder {
           ),
         ],
       ),
+
+      // Dummy empty b:section to fully satisfy Blogger parser requirements
+      BSection(
+        id: 'dummy-layout-section',
+        showaddelement: false,
+        children: [],
+      ),
     ],
   );
 }
