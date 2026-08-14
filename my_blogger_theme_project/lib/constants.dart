@@ -160,6 +160,145 @@ class Constants {
                     }
                   }
 
+                  function toGraphDocument(schemas) {
+                    var inputList = Array.isArray(schemas) ? schemas : [schemas];
+                    var contextUrls = new Set();
+                    var combinedContextMap = {};
+                    var entityMap = new Map();
+                    var standaloneNodes = [];
+
+                    function mergeContextValue(contextVal) {
+                      if (!contextVal) return;
+                      if (typeof contextVal === 'string') {
+                        contextUrls.add(contextVal);
+                      } else if (Array.isArray(contextVal)) {
+                        for (var i = 0; i < contextVal.length; i++) {
+                          mergeContextValue(contextVal[i]);
+                        }
+                      } else if (typeof contextVal === 'object' && contextVal !== null) {
+                        for (var key in contextVal) {
+                          if (contextVal.hasOwnProperty(key)) {
+                            var v = contextVal[key];
+                            if (v === null || v === undefined) continue;
+                            if (typeof v === 'object' && !Array.isArray(v)) {
+                              var existing = combinedContextMap[key];
+                              if (existing && typeof existing === 'object' && !Array.isArray(existing)) {
+                                combinedContextMap[key] = deepMerge(existing, v);
+                              } else {
+                                combinedContextMap[key] = deepMerge({}, v);
+                              }
+                            } else {
+                              combinedContextMap[key] = v;
+                            }
+                          }
+                        }
+                      }
+                    }
+
+                    function extractAndStripContext(node) {
+                      if (!node || typeof node !== 'object') return node;
+                      if (Array.isArray(node)) {
+                        return node.map(extractAndStripContext);
+                      }
+                      if (node.hasOwnProperty('@context') && node['@context']) {
+                        mergeContextValue(node['@context']);
+                      }
+                      var cleaned = {};
+                      for (var key in node) {
+                        if (node.hasOwnProperty(key)) {
+                          if (key === '@context') continue;
+                          cleaned[key] = extractAndStripContext(node[key]);
+                        }
+                      }
+                      return cleaned;
+                    }
+
+                    function registerEntity(node) {
+                      var id = node['@id'] || node['id'];
+                      if (id && typeof id === 'string') {
+                        if (entityMap.has(id)) {
+                          var existing = entityMap.get(id);
+                          entityMap.set(id, deepMerge(existing, node));
+                        } else {
+                          entityMap.set(id, node);
+                        }
+                      } else {
+                        standaloneNodes.push(node);
+                      }
+                    }
+
+                    for (var i = 0; i < inputList.length; i++) {
+                      var schema = inputList[i];
+                      var cleanedSchema = extractAndStripContext(schema);
+                      if (cleanedSchema && Array.isArray(cleanedSchema['@graph'])) {
+                        for (var j = 0; j < cleanedSchema['@graph'].length; j++) {
+                          registerEntity(cleanedSchema['@graph'][j]);
+                        }
+                      } else if (cleanedSchema) {
+                        registerEntity(cleanedSchema);
+                      }
+                    }
+
+                    // Build unified context
+                    var finalContext = 'https://schema.org';
+                    var isSchemaOrg = false;
+                    contextUrls.forEach(function(u) {
+                      if (u.indexOf('schema.org') !== -1) isSchemaOrg = true;
+                    });
+                    for (var k in combinedContextMap) {
+                      if (combinedContextMap.hasOwnProperty(k)) {
+                        if (k === '@vocab' || k === 'schema') isSchemaOrg = true;
+                      }
+                    }
+
+                    var customUrls = [];
+                    contextUrls.forEach(function(u) {
+                      if (u.indexOf('schema.org') === -1) customUrls.push(u);
+                    });
+
+                    var customMap = {};
+                    for (var k in combinedContextMap) {
+                      if (combinedContextMap.hasOwnProperty(k)) {
+                        if (k === '@vocab' && combinedContextMap[k].indexOf('schema.org') !== -1) continue;
+                        if (k === 'schema' && combinedContextMap[k].indexOf('schema.org') !== -1) continue;
+                        customMap[k] = combinedContextMap[k];
+                      }
+                    }
+
+                    var hasCustom = customUrls.length > 0 || Object.keys(customMap).length > 0;
+                    if (!hasCustom) {
+                      finalContext = 'https://schema.org';
+                    } else {
+                      var unified = {};
+                      if (isSchemaOrg) {
+                        unified['@vocab'] = 'https://schema.org/';
+                        unified['schema'] = 'https://schema.org/';
+                      }
+                      for (var k in customMap) {
+                        if (customMap.hasOwnProperty(k)) {
+                          unified[k] = customMap[k];
+                        }
+                      }
+                      if (customUrls.length > 0) {
+                        var resList = [].concat(customUrls);
+                        if (Object.keys(unified).length > 0) resList.push(unified);
+                        finalContext = resList;
+                      } else {
+                        finalContext = unified;
+                      }
+                    }
+
+                    var entities = [];
+                    entityMap.forEach(function(val) {
+                      entities.push(val);
+                    });
+
+                    return {
+                      '@context': finalContext,
+                      '@graph': entities.concat(standaloneNodes)
+                    };
+                  }
+
                   // Entry point
                   async function init() {
                     var localJsonLdEl = document.getElementById('raw-jsonld');
@@ -172,8 +311,11 @@ class Constants {
                     // Resolve references and fetch dynamically from Blogger at runtime in the browser!
                     var fullyMergedSchema = await resolveAndLoadSchema(localSchema, base);
 
-                    // Update AMP State dynamically!
-                    AMP.setState({ productState: fullyMergedSchema });
+                    // Compile into a clean, flat unified @graph document structure at runtime!
+                    var unifiedGraphDocument = toGraphDocument(fullyMergedSchema);
+
+                    // Update AMP State dynamically with clean @graph representation!
+                    AMP.setState({ productState: unifiedGraphDocument });
                   }
 
                   init();
