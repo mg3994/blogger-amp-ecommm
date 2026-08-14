@@ -9,6 +9,7 @@ dependencies:
   blogger_theme: ^5.0.0
   path: ^1.9.0
   http: ^1.2.0
+  crypto: ^3.0.3
 
 dev_dependencies:
   lints: ^6.0.0
