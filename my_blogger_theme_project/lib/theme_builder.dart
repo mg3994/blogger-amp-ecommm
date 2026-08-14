@@ -439,6 +439,18 @@ class ThemeBuilder {
                 box-shadow: 0 4px 6px rgba(0,0,0,0.1);
                 border-radius: 4px;
               }
+              /* Delivery Verification status classes */
+              .verified-pincode-alert {
+                margin-top: 20px;
+                padding: 10px;
+                border-radius: 4px;
+                background: rgba(46, 193, 86, 0.1);
+                color: var(--success-color);
+                display: block;
+              }
+              .hidden {
+                display: none !important;
+              }
             ''',
             escape: false,
           ),
@@ -578,11 +590,16 @@ class ThemeBuilder {
         nodom: 'nodom',
         attributes: {
           'id': 'schemaOverrideScript',
+          'script': 'my-amp-js', // Mandated by AMP spec for inline worker script definitions!
         },
         children: [
           DomComponent(
             'script',
-            attributes: {'target': 'amp-script', 'type': 'text/plain'},
+            attributes: {
+              'id': 'my-amp-js', // Matches script attribute in the parent container
+              'target': 'amp-script',
+              'type': 'text/plain',
+            },
             children: [
               const RawText('//<![CDATA[\n' + Constants.inlineJsScript + '\n//]]>'),
             ],
@@ -684,25 +701,43 @@ class ThemeBuilder {
                   Div(
                     attributes: {'class': 'detail-info-area'},
                     children: [
-                      H1(
+                      // Dynamic content container driven by AMP-LIST with local amp-state:productState
+                      // This ensures the title, description, and status render instantly on initial page load AND upon state changes!
+                      AmpList(
                         attributes: {
-                          'data-amp-bind-text': 'productState.name',
+                          'src': 'amp-state:productState',
+                          'data-amp-bind-src': 'productState',
+                          'layout': 'fixed-height',
+                          'height': '320',
+                          'binding': 'always',
                         },
-                        children: [const BData(value: 'post.title')],
-                      ),
-                      Div(
-                        attributes: {
-                          'class': 'stock-badge in-stock',
-                          'data-amp-bind-class': 'productState.hasVariant[0].inStock ? "stock-badge in-stock" : "stock-badge out-stock"',
-                          'data-amp-bind-text': 'productState.hasVariant[0].inStock ? "In Stock" : "Out of Stock"',
-                        },
-                        children: [const Text('In Stock')],
-                      ),
-                      P(
-                        attributes: {
-                          'data-amp-bind-text': 'productState.description',
-                        },
-                        children: [const BData(value: 'post.body')],
+                        children: [
+                          AmpMustache(
+                            children: [
+                              H1(children: [const Text('{{name}}')]),
+                              Div(
+                                attributes: {
+                                  'class': 'stock-badge in-stock',
+                                  'style': 'margin-bottom:10px;',
+                                },
+                                children: [
+                                  const Text('{{#hasVariant.0.inStock}}In Stock{{/hasVariant.0.inStock}}{{^hasVariant.0.inStock}}Out of Stock{{/hasVariant.0.inStock}}'),
+                                ],
+                              ),
+                              P(children: [const Text('{{description}}')]),
+
+                              // Price display
+                              Div(
+                                attributes: {
+                                  'style': 'color:var(--primary-color); font-size:1.8rem; font-weight:bold; margin: 15px 0;'
+                                },
+                                children: [
+                                  const Text('₹{{hasVariant.0.price}}'),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ],
                       ),
 
                       // Variant Selector (Size)
@@ -737,25 +772,15 @@ class ThemeBuilder {
                         ],
                       ),
 
-                      // Quantity & Price Row
+                      // Quantity control
                       Div(
                         attributes: {
                           'style': 'display:flex; justify-content:space-between; align-items:center; margin: 20px 0;'
                         },
                         children: [
-                          Div(
-                            attributes: {
-                              'style': 'color:var(--primary-color); font-size:1.8rem; font-weight:bold;'
-                            },
-                            children: [
-                              const Text('₹'),
-                              Span(
-                                attributes: {
-                                  'data-amp-bind-text': 'productState.hasVariant[0].price',
-                                },
-                                children: [const Text('38,851.00')],
-                              ),
-                            ],
+                          const Div(
+                            attributes: {'class': 'selector-title'},
+                            children: [Text('Quantity')],
                           ),
                           Div(
                             attributes: {
@@ -980,8 +1005,8 @@ class ThemeBuilder {
               ),
               Div(
                 attributes: {
-                  'style': 'margin-top:20px; padding:10px; border-radius:4px;',
-                  'data-amp-bind-style': 'checkoutState.pincodeVerified ? "margin-top:20px; padding:10px; border-radius:4px; background:rgba(46,193,86,0.1); color:var(--success-color);" : "display:none;"',
+                  'class': 'hidden',
+                  'data-amp-bind-class': 'checkoutState.pincodeVerified ? "verified-pincode-alert" : "hidden"',
                 },
                 children: [
                   const Text('✓ Delivery is available at: '),
