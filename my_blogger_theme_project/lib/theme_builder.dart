@@ -443,7 +443,7 @@ class ThemeBuilder {
                   Span(
                     attributes: {
                       'class': 'cart-badge',
-                      '&#91;text&#93;': 'cartState.count',
+                      'data-amp-bind-text': 'cartState.count',
                     },
                     children: [const Text('0')],
                   ),
@@ -491,7 +491,11 @@ class ThemeBuilder {
                                       'expr:href': 'data:post.url',
                                     },
                                     children: [
-                                      Img(
+                                      AmpImg(
+                                        src: 'https://picsum.dev/400/300?text=Product',
+                                        width: '400',
+                                        height: '300',
+                                        layout: 'responsive',
                                         attributes: {
                                           'class': 'product-img',
                                           'expr:src': 'data:post.firstImageUrl',
@@ -548,7 +552,7 @@ class ThemeBuilder {
                                         width: '400',
                                         height: '400',
                                         layout: 'responsive',
-                                        attributes: {'&#91;src&#93;': 'productState.image[0]'},
+                                        attributes: {'data-amp-bind-src': 'productState.image[0]'},
                                       ),
                                     ],
                                   ),
@@ -561,21 +565,21 @@ class ThemeBuilder {
                                 children: [
                                   H1(
                                     attributes: {
-                                      '&#91;text&#93;': 'productState.name',
+                                      'data-amp-bind-text': 'productState.name',
                                     },
                                     children: [const BData(value: 'post.title')],
                                   ),
                                   Div(
                                     attributes: {
                                       'class': 'stock-badge in-stock',
-                                      '&#91;class&#93;': 'productState.hasVariant[0].inStock ? "stock-badge in-stock" : "stock-badge out-stock"',
-                                      '&#91;text&#93;': 'productState.hasVariant[0].inStock ? "In Stock" : "Out of Stock"',
+                                      'data-amp-bind-class': 'productState.hasVariant[0].inStock ? "stock-badge in-stock" : "stock-badge out-stock"',
+                                      'data-amp-bind-text': 'productState.hasVariant[0].inStock ? "In Stock" : "Out of Stock"',
                                     },
                                     children: [const Text('In Stock')],
                                   ),
                                   P(
                                     attributes: {
-                                      '&#91;text&#93;': 'productState.description',
+                                      'data-amp-bind-text': 'productState.description',
                                     },
                                     children: [const BData(value: 'post.body')],
                                   ),
@@ -626,7 +630,7 @@ class ThemeBuilder {
                                           const Text('₹'),
                                           Span(
                                             attributes: {
-                                              '&#91;text&#93;': 'productState.hasVariant[0].price',
+                                              'data-amp-bind-text': 'productState.hasVariant[0].price',
                                             },
                                             children: [const Text('38,851.00')],
                                           ),
@@ -647,7 +651,7 @@ class ThemeBuilder {
                                           Span(
                                             attributes: {
                                               'class': 'qty-val',
-                                              '&#91;text&#93;': 'qty',
+                                              'data-amp-bind-text': 'qty',
                                             },
                                             children: [const Text('1')],
                                           ),
@@ -677,14 +681,14 @@ class ThemeBuilder {
                                               Span(
                                                 attributes: {
                                                   'class': 'addon-name',
-                                                  '&#91;text&#93;': 'productState.addOn[0].itemOffered.name',
+                                                  'data-amp-bind-text': 'productState.addOn[0].itemOffered.name',
                                                 },
                                                 children: [const Text('Premium Gift Wrapping')],
                                               ),
                                               Span(
                                                 attributes: {
                                                   'class': 'addon-price',
-                                                  '&#91;text&#93;': '"₹" + productState.addOn[0].price',
+                                                  'data-amp-bind-text': '"₹" + productState.addOn[0].price',
                                                 },
                                                 children: [const Text('₹499.00')],
                                               ),
@@ -753,7 +757,7 @@ class ThemeBuilder {
           // Render Cart Items dynamically using Mustache Template
           AmpList(
             attributes: {
-              '&#91;src&#93;': 'cartState.items',
+              'data-amp-bind-src': 'cartState.items',
               'layout': 'fixed-height',
               'height': '250',
             },
@@ -788,7 +792,7 @@ class ThemeBuilder {
             children: [
               const Text('Total:'),
               Span(
-                attributes: {'&#91;text&#93;': '"₹" + cartState.subtotal'},
+                attributes: {'data-amp-bind-text': '"₹" + cartState.subtotal'},
                 children: [const Text('₹0.00')],
               ),
             ],
@@ -862,12 +866,12 @@ class ThemeBuilder {
               Div(
                 attributes: {
                   'style': 'margin-top:20px; padding:10px; border-radius:4px;',
-                  '&#91;style&#93;': 'checkoutState.pincodeVerified ? "margin-top:20px; padding:10px; border-radius:4px; background:rgba(46,193,86,0.1); color:var(--success-color);" : "display:none;"',
+                  'data-amp-bind-style': 'checkoutState.pincodeVerified ? "margin-top:20px; padding:10px; border-radius:4px; background:rgba(46,193,86,0.1); color:var(--success-color);" : "display:none;"',
                 },
                 children: [
                   const Text('✓ Delivery is available at: '),
                   Span(
-                    attributes: {'&#91;text&#93;': 'checkoutState.address'},
+                    attributes: {'data-amp-bind-text': 'checkoutState.address'},
                     children: [const Text('')],
                   ),
                 ],
