@@ -48,7 +48,62 @@ class ThemeBuilder {
         // AMP Boilerplate styles
         const AmpBoilerplate(),
 
-        // Custom theme styles
+        // Dynamic Blogger Theme variables for the Theme Designer UI
+        // Disables default b:skin CSS output while preserving custom color variables for AMP compliance.
+        BIf(
+          cond: false.toString(),
+          children: [
+            const BSkin(
+              "",
+              variables: [
+                BVariable(
+                  name: "primary_color",
+                  description: "Primary Theme Color",
+                  type: "color",
+                  defaultValue: "#ff9900",
+                  value: "#ff9900",
+                ),
+                BVariable(
+                  name: "secondary_color",
+                  description: "Secondary Theme Color",
+                  type: "color",
+                  defaultValue: "#333333",
+                  value: "#333333",
+                ),
+                BVariable(
+                  name: "background_light",
+                  description: "Background Light Color",
+                  type: "color",
+                  defaultValue: "#f4f4f4",
+                  value: "#f4f4f4",
+                ),
+                BVariable(
+                  name: "text_dark",
+                  description: "Text Dark Color",
+                  type: "color",
+                  defaultValue: "#222222",
+                  value: "#222222",
+                ),
+                BVariable(
+                  name: "border_color",
+                  description: "Border Outline Color",
+                  type: "color",
+                  defaultValue: "#dddddd",
+                  value: "#dddddd",
+                ),
+                BVariable(
+                  name: "success_color",
+                  description: "Success Highlight Color",
+                  type: "color",
+                  defaultValue: "#2ec156",
+                  value: "#2ec156",
+                ),
+              ],
+            ),
+          ],
+        ),
+
+        // Custom theme styles referencing Blogger skin variables
         Style(
           attributes: {
             'amp-custom': 'amp-custom',
@@ -58,12 +113,12 @@ class ThemeBuilder {
           children: [
             const Text('''
               :root {
-                --primary-color: #ff9900;
-                --secondary-color: #333333;
-                --background-light: #f4f4f4;
-                --text-dark: #222222;
-                --border-color: #dddddd;
-                --success-color: #2ec156;
+                --primary-color: <data:skin.vars.primary_color/>;
+                --secondary-color: <data:skin.vars.secondary_color/>;
+                --background-light: <data:skin.vars.background_light/>;
+                --text-dark: <data:skin.vars.text_dark/>;
+                --border-color: <data:skin.vars.border_color/>;
+                --success-color: <data:skin.vars.success_color/>;
               }
               body {
                 font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
