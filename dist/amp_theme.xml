@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE html>
-<html b:responsive="true" b:defaultwidgetversion="2" b:layoutsversion="3" b:css="false" xmlns="http://www.w3.org/1999/xhtml" xmlns:b="http://www.google.com/2005/gml/b" xmlns:data="http://www.google.com/2005/gml/data" xmlns:expr="http://www.google.com/2005/gml/expr"><b:attr name="xmlns"/><b:attr name="xmlns:b"/><b:attr name="xmlns:expr"/><b:attr name="xmlns:data"/><b:attr name="amp" value="amp" cond="data:blog.isMobileRequest"/><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1"/><link rel="canonical" expr:href="data:blog.canonicalUrl"/><title><data:blog.pageTitle/></title><script async="async" src="https://cdn.ampproject.org/v0.js"/><script async="async" custom-element="amp-bind" src="https://cdn.ampproject.org/v0/amp-bind-0.1.js"/><script async="async" custom-element="amp-list" src="https://cdn.ampproject.org/v0/amp-list-0.1.js"/><script async="async" custom-element="amp-form" src="https://cdn.ampproject.org/v0/amp-form-0.1.js"/><script async="async" custom-template="amp-mustache" src="https://cdn.ampproject.org/v0/amp-mustache-0.2.js"/><script async="async" custom-element="amp-carousel" src="https://cdn.ampproject.org/v0/amp-carousel-0.1.js"/><script async="async" custom-element="amp-lightbox" src="https://cdn.ampproject.org/v0/amp-lightbox-0.1.js"/><script async="async" custom-element="amp-sidebar" src="https://cdn.ampproject.org/v0/amp-sidebar-0.1.js"/><script async="async" custom-element="amp-selector" src="https://cdn.ampproject.org/v0/amp-selector-0.1.js"/><script async="async" custom-element="amp-autocomplete" src="https://cdn.ampproject.org/v0/amp-autocomplete-0.1.js"/><style amp-boilerplate="amp-boilerplate">body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate="amp-boilerplate">body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript><b:if cond="false">
+<html b:responsive="true" b:defaultwidgetversion="2" b:layoutsversion="3" b:css="false" xmlns="http://www.w3.org/1999/xhtml" xmlns:b="http://www.google.com/2005/gml/b" xmlns:data="http://www.google.com/2005/gml/data" xmlns:expr="http://www.google.com/2005/gml/expr"><b:attr name="xmlns"/><b:attr name="xmlns:b"/><b:attr name="xmlns:expr"/><b:attr name="xmlns:data"/><b:attr name="amp" value="amp" cond="data:blog.isMobileRequest"/><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1"/><link rel="canonical" expr:href="data:blog.canonicalUrl"/><title><data:blog.pageTitle/></title><script async="async" src="https://cdn.ampproject.org/v0.js"/><script async="async" custom-element="amp-bind" src="https://cdn.ampproject.org/v0/amp-bind-0.1.js"/><script async="async" custom-element="amp-list" src="https://cdn.ampproject.org/v0/amp-list-0.1.js"/><script async="async" custom-element="amp-form" src="https://cdn.ampproject.org/v0/amp-form-0.1.js"/><script async="async" custom-template="amp-mustache" src="https://cdn.ampproject.org/v0/amp-mustache-0.2.js"/><script async="async" custom-element="amp-carousel" src="https://cdn.ampproject.org/v0/amp-carousel-0.1.js"/><script async="async" custom-element="amp-lightbox" src="https://cdn.ampproject.org/v0/amp-lightbox-0.1.js"/><script async="async" custom-element="amp-sidebar" src="https://cdn.ampproject.org/v0/amp-sidebar-0.1.js"/><script async="async" custom-element="amp-selector" src="https://cdn.ampproject.org/v0/amp-selector-0.1.js"/><script async="async" custom-element="amp-autocomplete" src="https://cdn.ampproject.org/v0/amp-autocomplete-0.1.js"/><script async="async" custom-element="amp-script" src="https://cdn.ampproject.org/v0/amp-script-0.1.js"/><style amp-boilerplate="amp-boilerplate">body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate="amp-boilerplate">body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript><b:if cond="false">
 <!-- prettier-ignore -->
 <b:skin version="1.3.3"><![CDATA[
  /*
@@ -311,7 +311,185 @@
                 border-radius: 4px;
                 box-sizing: border-box;
               }
-            </style></head><body><amp-state id="cartState"><script type="application/json">{"items": [], "subtotal": 0, "count": 0}</script></amp-state><amp-state id="checkoutState"><script type="application/json">{"pincode": "", "pincodeVerified": false, "address": ""}</script></amp-state><amp-state id="productState"><script type="application/json">{"@context": "https://schema.org","@base": "118774185466060931/159915394249811386","@type": "ProductGroup","name": "Premium Organic Cotton Crewneck Collection","description": "Premium 100% organic cotton crewneck collection featuring various colors and optional personalization services.","brand": {"@type": "Brand", "name": "Antinna Pro Max"},"image": ["https://picsum.dev/800/600?blur=5", "https://picsum.dev/200/200?static"],"hasVariant": [{"@id": "variant-midnight-blue","@type": "Product","name": "Elite Crewneck - Midnight Blue (Large)","sku": "EC-MB-L-001","color": "Midnight Blue","size": "Large","price": "38851.00","priceCurrency": "INR","inStock": true}],"addOn": [{"@type": "Offer","price": "499.00","priceCurrency": "INR","itemOffered": {"@id": "addon-wrapping","@type": "Service","name": "Premium Gift Wrapping"}}]}</script></amp-state><header><a href="/" class="logo">Antinna E-Comm</a><div class="nav-actions"><button class="cart-btn" on="tap:cartDrawer.toggle">&#x1F6D2; Bag<span class="cart-badge" data-amp-bind-text="cartState.count">0</span></button></div></header><div class="main-container"><b:if cond="data:view.isMultipleItems"><h1>Our Collections</h1><div class="product-grid"><b:loop values="data:posts" var="post"><a class="product-card" expr:href="data:post.url"><amp-img src="https://picsum.dev/400/300?text=Product" width="400" height="300" layout="responsive" class="product-img" expr:src="data:post.firstImageUrl" alt="Product Image" loading="lazy"/><div class="product-info"><div class="p-badge">Product</div><h3 class="product-title"><data:post.title/></h3><div class="product-price">&#x20B9;<data:post.id/></div></div></a></b:loop></div><b:else/><div class="detail-container"><div class="detail-img-area"><amp-carousel type="slides" width="400" height="400" layout="responsive" loop="loop"><amp-img src="https://picsum.dev/800/600?blur=5" width="400" height="400" layout="responsive" data-amp-bind-src="productState.image[0]"/></amp-carousel></div><div class="detail-info-area"><h1 data-amp-bind-text="productState.name"><data:post.title/></h1><div class="stock-badge in-stock" data-amp-bind-class="productState.hasVariant[0].inStock ? &quot;stock-badge in-stock&quot; : &quot;stock-badge out-stock&quot;" data-amp-bind-text="productState.hasVariant[0].inStock ? &quot;In Stock&quot; : &quot;Out of Stock&quot;">In Stock</div><p data-amp-bind-text="productState.description"><data:post.body/></p><div class="variant-selector"><div class="selector-title">Select Size</div><amp-selector id="sizeSelector" name="size"><button class="option-btn" option="Large" selected="selected">Large</button><button class="option-btn" option="Medium">Medium</button></amp-selector></div><div style="display:flex; justify-content:space-between; align-items:center; margin: 20px 0;"><div style="color:var(--primary-color); font-size:1.8rem; font-weight:bold;">&#x20B9;<span data-amp-bind-text="productState.hasVariant[0].price">38,851.00</span></div><div style="display:flex; align-items:center; gap:10px;"><button class="qty-btn" on="tap:AMP.setState({ qty: (qty &gt; 1 ? qty - 1 : 1) })">-</button><span class="qty-val" data-amp-bind-text="qty">1</span><button class="qty-btn" on="tap:AMP.setState({ qty: (qty || 1) + 1 })">+</button></div></div><div class="addons-section"><h3>Optional Add-ons</h3><div class="addon-card"><div class="addon-info"><span class="addon-name" data-amp-bind-text="productState.addOn[0].itemOffered.name">Premium Gift Wrapping</span><span class="addon-price" data-amp-bind-text="&quot;&#x20B9;&quot; + productState.addOn[0].price">&#x20B9;499.00</span></div><button class="option-btn" on="tap:AMP.setState({ cartState: { items: cartState.items.concat([{&quot;name&quot;: productState.addOn[0].itemOffered.name, &quot;price&quot;: productState.addOn[0].price, &quot;qty&quot;: 1}]), subtotal: cartState.subtotal + 499, count: cartState.count + 1 } })">Add Addon</button></div></div><div class="action-bar"><button class="btn-primary" on="tap:AMP.setState({ cartState: { items: cartState.items.concat([{&quot;name&quot;: productState.name, &quot;price&quot;: productState.hasVariant[0].price, &quot;qty&quot;: qty || 1}]), subtotal: cartState.subtotal + (productState.hasVariant[0].price * (qty || 1)), count: cartState.count + (qty || 1) } }), cartDrawer.open">ADD TO BAG</button></div></div></div></b:if></div><amp-sidebar id="cartDrawer" layout="nodisplay" side="right"><div class="cart-header"><h2>Your Bag</h2><button class="close-sidebar-btn" on="tap:cartDrawer.close">&#xD7;</button></div><amp-list data-amp-bind-src="cartState.items" layout="fixed-height" height="250"><template type="amp-mustache"><div class="cart-item"><div class="cart-item-details"><div style="font-weight:bold;">{{name}}</div><div style="color:var(--primary-color);">&#x20B9;{{price}} x {{qty}}</div></div></div></template></amp-list><div class="cart-total">Total:<span data-amp-bind-text="&quot;&#x20B9;&quot; + cartState.subtotal">&#x20B9;0.00</span></div><button class="btn-primary" style="width:100%; text-align:center;" on="tap:locationModal.open, cartDrawer.close">Checkout Order</button></amp-sidebar><amp-lightbox id="locationModal" layout="nodisplay"><div class="lightbox-content"><button class="close-lightbox" on="tap:locationModal.close">&#xD7;</button><h3>Verify Delivery Area</h3><form method="GET" action-xhr="https://script.google.com/macros/s/AKfycbyca4Xz_AE6Om1okIMf0TQ9EE9uIifQcVZhsDwnZK0K4weG7VD0w3jEzM0aCcuBeoWIIA/exec" target="_top" on="submit-success:AMP.setState({ checkoutState: { pincodeVerified: event.response.success, address: event.response.address } })"><div class="form-group"><label for="pincodeInput">Enter Delivery Pincode</label><input type="text" id="pincodeInput" name="pincode" class="form-control" placeholder="e.g., 110001" required="required"/></div><button type="submit" class="btn-primary" style="width:100%; margin-top:10px;">Verify Pincode</button></form><div style="margin-top:20px; padding:10px; border-radius:4px;" data-amp-bind-style="checkoutState.pincodeVerified ? &quot;margin-top:20px; padding:10px; border-radius:4px; background:rgba(46,193,86,0.1); color:var(--success-color);&quot; : &quot;display:none;&quot;">&#x2713; Delivery is available at: <span data-amp-bind-text="checkoutState.address"></span></div></div></amp-lightbox>&lt;textarea id=&#39;template_widgets_js&#39; disabled=&#39;disabled&#39;
+            </style></head><body><amp-state id="cartState"><script type="application/json">{"items": [], "subtotal": 0, "count": 0}</script></amp-state><amp-state id="checkoutState"><script type="application/json">{"pincode": "", "pincodeVerified": false, "address": ""}</script></amp-state><amp-state id="productState"><script type="application/json">{"@context": "https://schema.org","@base": "118774185466060931/159915394249811386","@type": "ProductGroup","name": "Premium Organic Cotton Crewneck Collection","description": "Premium 100% organic cotton crewneck collection featuring various colors and optional personalization services.","brand": {"@type": "Brand", "name": "Antinna Pro Max"},"image": ["https://picsum.dev/800/600?blur=5", "https://picsum.dev/200/200?static"],"hasVariant": [{"@id": "variant-midnight-blue","@type": "Product","name": "Elite Crewneck - Midnight Blue (Large)","sku": "EC-MB-L-001","color": "Midnight Blue","size": "Large","price": "38851.00","priceCurrency": "INR","inStock": true}],"addOn": [{"@type": "Offer","price": "499.00","priceCurrency": "INR","itemOffered": {"@id": "addon-wrapping","@type": "Service","name": "Premium Gift Wrapping"}}]}</script></amp-state><header><a href="/" class="logo">Antinna E-Comm</a><div class="nav-actions"><button class="cart-btn" on="tap:cartDrawer.toggle">&#x1F6D2; Bag<span class="cart-badge" data-amp-bind-text="cartState.count">0</span></button></div></header><div id="raw-jsonld" style="display:none;" expr:data-base="data:blog.blogId + &quot;/&quot; + data:blog.postId"><data:post.body/></div><amp-script nodom="nodom" id="schemaOverrideScript"><script target="amp-script" type="text/plain">                (function() {
+                  function decodeEntities(text) {
+                    if (!text) return "";
+                    return text
+                      .replace(/&quot;/g, '"')
+                      .replace(/&amp;/g, '&')
+                      .replace(/&#39;/g, "'")
+                      .replace(/&apos;/g, "'")
+                      .replace(/&lt;/g, '<')
+                      .replace(/&gt;/g, '>')
+                      .replace(/&#91;/g, '[')
+                      .replace(/&#93;/g, ']');
+                  }
+
+                  function deepMerge(base, override) {
+                    var merged = Object.assign({}, base);
+                    for (var key in override) {
+                      if (override.hasOwnProperty(key)) {
+                        var overVal = override[key];
+                        var baseVal = merged[key];
+                        if (overVal && typeof overVal === 'object' && !Array.isArray(overVal) && baseVal && typeof baseVal === 'object' && !Array.isArray(baseVal)) {
+                          merged[key] = deepMerge(baseVal, overVal);
+                        } else if (Array.isArray(overVal) && Array.isArray(baseVal)) {
+                          merged[key] = mergeLists(baseVal, overVal);
+                        } else {
+                          merged[key] = overVal;
+                        }
+                      }
+                    }
+                    return merged;
+                  }
+
+                  function mergeLists(baseList, overrideList) {
+                    var result = [].concat(baseList);
+                    for (var i = 0; i < overrideList.length; i++) {
+                      var overItem = overrideList[i];
+                      if (overItem && typeof overItem === 'object') {
+                        var overId = overItem['@id'] || overItem['id'];
+                        if (overId) {
+                          var idx = result.findIndex(function(baseItem) {
+                            if (baseItem && typeof baseItem === 'object') {
+                              var baseId = baseItem['@id'] || baseItem['id'];
+                              return baseId === overId;
+                            }
+                            return false;
+                          });
+                          if (idx !== -1) {
+                            result[idx] = deepMerge(result[idx], overItem);
+                          } else {
+                            result.push(overItem);
+                          }
+                        } else {
+                          result.push(overItem);
+                        }
+                      } else {
+                        if (result.indexOf(overItem) === -1) {
+                          result.push(overItem);
+                        }
+                      }
+                    }
+                    return result;
+                  }
+
+                  function resolveId(base, id) {
+                    if (id.indexOf('http://') === 0 || id.indexOf('https://') === 0) {
+                      return { url: id };
+                    }
+                    var baseParts = base.split('/');
+                    var defaultBlogId = baseParts[0] || '';
+                    var idParts = id.split('/');
+                    if (idParts.length === 1) {
+                      return { blogId: defaultBlogId, postId: idParts[0] };
+                    } else if (idParts.length >= 2) {
+                      return { blogId: idParts[0], postId: idParts[1] };
+                    }
+                    return { blogId: defaultBlogId, postId: '' };
+                  }
+
+                  async function fetchPostSchema(blogId, postId) {
+                    var url = 'https://www.blogger.com/feeds/' + blogId + '/posts/default/' + postId + '?alt=json';
+                    try {
+                      var res = await fetch(url);
+                      if (!res.ok) return null;
+                      var data = await res.json();
+                      var content = data.entry && data.entry.content ? data.entry.content.$t : '';
+                      return extractJsonLd(content);
+                    } catch(e) {
+                      return null;
+                    }
+                  }
+
+                  function extractJsonLd(content) {
+                    if (!content) return null;
+                    try {
+                      var scriptMatch = content.match(/<script[^>]*type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/i);
+                      var jsonStr = scriptMatch ? scriptMatch[1] : content;
+                      jsonStr = decodeEntities(jsonStr).trim();
+                      return JSON.parse(jsonStr);
+                    } catch(e) {
+                      return null;
+                    }
+                  }
+
+                  async function resolveAndLoadSchema(schema, base) {
+                    var resolved = Object.assign({}, schema);
+                    await traverseAndResolve(resolved, base);
+                    return resolved;
+                  }
+
+                  async function traverseAndResolve(node, base) {
+                    if (node && typeof node === 'object') {
+                      if (!Array.isArray(node)) {
+                        var idVal = node['@id'] || node['id'];
+                        if (idVal && typeof idVal === 'string') {
+                          var resolvedId = resolveId(base, idVal);
+                          var blogId = resolvedId.blogId;
+                          var postId = resolvedId.postId;
+                          var fullUrl = resolvedId.url;
+                          var fetchedSchema = null;
+                          if (blogId && postId) {
+                            fetchedSchema = await fetchPostSchema(blogId, postId);
+                          } else if (fullUrl) {
+                            try {
+                              var res = await fetch(fullUrl);
+                              if (res.ok) {
+                                var text = await res.text();
+                                fetchedSchema = extractJsonLd(text);
+                              }
+                            } catch(e) {}
+                          }
+                          if (fetchedSchema) {
+                            var nestedBase = (blogId && postId) ? (blogId + '/' + postId) : base;
+                            fetchedSchema = await resolveAndLoadSchema(fetchedSchema, nestedBase);
+                            var merged = deepMerge(fetchedSchema, node);
+                            for (var key in node) {
+                              if (node.hasOwnProperty(key)) delete node[key];
+                            }
+                            Object.assign(node, merged);
+                            return;
+                          }
+                        }
+                        for (var key in node) {
+                          if (node.hasOwnProperty(key)) {
+                            var val = node[key];
+                            if (val && typeof val === 'object') {
+                              await traverseAndResolve(val, base);
+                            }
+                          }
+                        }
+                      } else {
+                        for (var i = 0; i < node.length; i++) {
+                          var item = node[i];
+                          if (item && typeof item === 'object') {
+                            await traverseAndResolve(item, base);
+                          }
+                        }
+                      }
+                    }
+                  }
+
+                  // Entry point
+                  async function init() {
+                    var localJsonLdEl = document.getElementById('raw-jsonld');
+                    if (!localJsonLdEl) return;
+                    var base = localJsonLdEl.getAttribute('data-base') || '';
+                    var rawContent = localJsonLdEl.textContent || '';
+                    var localSchema = extractJsonLd(rawContent);
+                    if (!localSchema) return;
+
+                    // Resolve references and fetch dynamically from Blogger at runtime in the browser!
+                    var fullyMergedSchema = await resolveAndLoadSchema(localSchema, base);
+
+                    // Update AMP State dynamically!
+                    AMP.setState({ productState: fullyMergedSchema });
+                  }
+
+                  init();
+                })();
+              </script></amp-script><div class="main-container"><b:if cond="data:view.isMultipleItems"><h1>Our Collections</h1><div class="product-grid"><b:loop values="data:posts" var="post"><a class="product-card" expr:href="data:post.url"><amp-img src="https://picsum.dev/400/300?text=Product" width="400" height="300" layout="responsive" class="product-img" expr:src="data:post.firstImageUrl" alt="Product Image" loading="lazy"/><div class="product-info"><div class="p-badge">Product</div><h3 class="product-title"><data:post.title/></h3><div class="product-price">&#x20B9;<data:post.id/></div></div></a></b:loop></div><b:else/><div class="detail-container"><div class="detail-img-area"><amp-carousel type="slides" width="400" height="400" layout="responsive" loop="loop"><amp-img src="https://picsum.dev/800/600?blur=5" width="400" height="400" layout="responsive" data-amp-bind-src="productState.image[0]"/></amp-carousel></div><div class="detail-info-area"><h1 data-amp-bind-text="productState.name"><data:post.title/></h1><div class="stock-badge in-stock" data-amp-bind-class="productState.hasVariant[0].inStock ? &quot;stock-badge in-stock&quot; : &quot;stock-badge out-stock&quot;" data-amp-bind-text="productState.hasVariant[0].inStock ? &quot;In Stock&quot; : &quot;Out of Stock&quot;">In Stock</div><p data-amp-bind-text="productState.description"><data:post.body/></p><div class="variant-selector"><div class="selector-title">Select Size</div><amp-selector id="sizeSelector" name="size"><button class="option-btn" option="Large" selected="selected">Large</button><button class="option-btn" option="Medium">Medium</button></amp-selector></div><div style="display:flex; justify-content:space-between; align-items:center; margin: 20px 0;"><div style="color:var(--primary-color); font-size:1.8rem; font-weight:bold;">&#x20B9;<span data-amp-bind-text="productState.hasVariant[0].price">38,851.00</span></div><div style="display:flex; align-items:center; gap:10px;"><button class="qty-btn" on="tap:AMP.setState({ qty: (qty &gt; 1 ? qty - 1 : 1) })">-</button><span class="qty-val" data-amp-bind-text="qty">1</span><button class="qty-btn" on="tap:AMP.setState({ qty: (qty || 1) + 1 })">+</button></div></div><div class="addons-section"><h3>Optional Add-ons</h3><div class="addon-card"><div class="addon-info"><span class="addon-name" data-amp-bind-text="productState.addOn[0].itemOffered.name">Premium Gift Wrapping</span><span class="addon-price" data-amp-bind-text="&quot;&#x20B9;&quot; + productState.addOn[0].price">&#x20B9;499.00</span></div><button class="option-btn" on="tap:AMP.setState({ cartState: { items: cartState.items.concat([{&quot;name&quot;: productState.addOn[0].itemOffered.name, &quot;price&quot;: productState.addOn[0].price, &quot;qty&quot;: 1}]), subtotal: cartState.subtotal + 499, count: cartState.count + 1 } })">Add Addon</button></div></div><div class="action-bar"><button class="btn-primary" on="tap:AMP.setState({ cartState: { items: cartState.items.concat([{&quot;name&quot;: productState.name, &quot;price&quot;: productState.hasVariant[0].price, &quot;qty&quot;: qty || 1}]), subtotal: cartState.subtotal + (productState.hasVariant[0].price * (qty || 1)), count: cartState.count + (qty || 1) } }), cartDrawer.open">ADD TO BAG</button></div></div></div></b:if></div><amp-sidebar id="cartDrawer" layout="nodisplay" side="right"><div class="cart-header"><h2>Your Bag</h2><button class="close-sidebar-btn" on="tap:cartDrawer.close">&#xD7;</button></div><amp-list data-amp-bind-src="cartState.items" layout="fixed-height" height="250"><template type="amp-mustache"><div class="cart-item"><div class="cart-item-details"><div style="font-weight:bold;">{{name}}</div><div style="color:var(--primary-color);">&#x20B9;{{price}} x {{qty}}</div></div></div></template></amp-list><div class="cart-total">Total:<span data-amp-bind-text="&quot;&#x20B9;&quot; + cartState.subtotal">&#x20B9;0.00</span></div><button class="btn-primary" style="width:100%; text-align:center;" on="tap:locationModal.open, cartDrawer.close">Checkout Order</button></amp-sidebar><amp-lightbox id="locationModal" layout="nodisplay"><div class="lightbox-content"><button class="close-lightbox" on="tap:locationModal.close">&#xD7;</button><h3>Verify Delivery Area</h3><form method="GET" action-xhr="https://script.google.com/macros/s/AKfycbyca4Xz_AE6Om1okIMf0TQ9EE9uIifQcVZhsDwnZK0K4weG7VD0w3jEzM0aCcuBeoWIIA/exec" target="_top" on="submit-success:AMP.setState({ checkoutState: { pincodeVerified: event.response.success, address: event.response.address } })"><div class="form-group"><label for="pincodeInput">Enter Delivery Pincode</label><input type="text" id="pincodeInput" name="pincode" class="form-control" placeholder="e.g., 110001" required="required"/></div><button type="submit" class="btn-primary" style="width:100%; margin-top:10px;">Verify Pincode</button></form><div style="margin-top:20px; padding:10px; border-radius:4px;" data-amp-bind-style="checkoutState.pincodeVerified ? &quot;margin-top:20px; padding:10px; border-radius:4px; background:rgba(46,193,86,0.1); color:var(--success-color);&quot; : &quot;display:none;&quot;">&#x2713; Delivery is available at: <span data-amp-bind-text="checkoutState.address"></span></div></div></amp-lightbox>&lt;textarea id=&#39;template_widgets_js&#39; disabled=&#39;disabled&#39;
  readonly=&#39;readonly&#39; hidden=&#39;hidden&#39; aria-hidden=&#39;true&#39;
 class=&#39;notranslate&#39;&gt;
   </body>
