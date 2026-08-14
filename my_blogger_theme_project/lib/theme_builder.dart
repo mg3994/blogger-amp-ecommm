@@ -50,6 +50,14 @@ class ThemeBuilder {
         // AMP Boilerplate styles
         const AmpBoilerplate(),
 
+        // Hardcoded custom script verification hash as requested by the user
+        Meta(
+          attributes: {
+            'name': 'amp-script-src',
+            'content': 'sha384-e6-K4kWll_iFL9jeralEon6meIFRzpjDhLBAyNhvnSXIrGNp_JQvzve--p5Tvdpe',
+          },
+        ),
+
         // Dynamic Blogger Theme variables for the Theme Designer UI
         // Disables default b:skin CSS output while preserving custom color variables for AMP compliance.
         BIf(
@@ -703,6 +711,7 @@ class ThemeBuilder {
                     children: [
                       // Dynamic content container driven by AMP-LIST with local amp-state:productState
                       // This ensures the title, description, and status render instantly on initial page load AND upon state changes!
+                      // Adding items="." tells <amp-list> that productState is a single root object itself!
                       AmpList(
                         attributes: {
                           'src': 'amp-state:productState',
@@ -710,6 +719,7 @@ class ThemeBuilder {
                           'layout': 'fixed-height',
                           'height': '320',
                           'binding': 'always',
+                          'items': '.',
                         },
                         children: [
                           AmpMustache(
